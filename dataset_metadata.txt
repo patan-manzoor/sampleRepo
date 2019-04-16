@@ -1,0 +1,293 @@
+{
+	"1234567890": {
+		"version": "1.0.0",
+		"imsOrg": "AdobeIMSOrganization@AdobeOrg",
+		"connectorId": "azure-blob",
+		"name": "CredentialsTest",
+		"created": 1502441089391,
+		"updated": 1502441089669,
+		"dule": {},
+		"aspect": "production",
+		"status": "enabled",
+		"fields": [{
+			"name": "f1",
+			"type": "string"
+		}, {
+			"name": "f2",
+			"type": "string"
+		}, {
+			"name": "f3",
+			"type": "string"
+		}],
+		"fileDescription": {
+			"persisted": false,
+			"format": "csv"
+		},
+		"transforms": "@/dataSets/598d6e81b2745f000015edcb/views/598d6e81b2745f000015edcc/transforms",
+		"files": "@/dataSets/1234567890/views/1234567890/files",
+		"children": "@/dataSetViews/598d6e81b2745f000015edcc/children",
+		"viewId": "598d6e81b2745f000015edcc"
+	},
+	"1234567891": {
+		"name": "NewNPETest07aug",
+		"schema": "@/xdms/context/profile",
+		"fields": {{
+	"$id": "context/profile",
+	"title": "Profile",
+	"type": "object",
+	"auditable": true,
+	"meta:extensible": true,
+	"meta:extends": [
+		"external/repo/commmon"
+	],
+	"meta:abstract": true,
+	"properties": {
+		"identityMap": {
+			"type": "object",
+			"meta:xdmType": "map",
+			"additionalProperties": {
+				"type": "array",
+				"meta:xdmType": "array",
+				"items": {
+					"$id": "context/identityitem",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Identifier",
+							"type": "string",
+							"meta:xdmType": "string"
+						},
+						"authenticatedState": {
+							"type": "string",
+							"default": "ambiguous",
+							"enum": [
+								"ambiguous",
+								"authenticated",
+								"loggedOut"
+							],
+							"meta:enum": {
+								"ambiguous": "Ambiguous",
+								"authenticated": "User identified by a login or simular action that was valid at the time of the event observation.",
+								"loggedOut": "User was identified by a login action at some point of time previously, but is not currently logged in."
+							},
+							"meta:xdmType": "string"
+						},
+						"primary": {
+							"title": "Primary",
+							"type": "boolean",
+							"default": false,
+							"meta:xdmType": "boolean"
+						}
+					},
+					"meta:altId": "_xdm.context.identityitem",
+					"meta:xdmType": "object",
+					"_refId": "context/identityitem"
+				}
+			}
+		}
+	},
+	"person": {
+		"title": "Person",
+		"$id": "context/person",
+		"type": "object",
+		"meta:abstract": true,
+		"properties": {
+			"name": {
+				"title": "Full name",
+				"$id": "context/person-name",
+				"type": "object",
+				"properties": {
+					"firstName": {
+						"title": "First name",
+						"type": "string",
+						"meta:xdmType": "string"
+					},
+					"lastName": {
+						"title": "Last name",
+						"type": "string",
+						"meta:xdmType": "string"
+					}
+				},
+				"meta:altId": "_xdm.context.person-name",
+				"meta:xdmType": "object",
+				"_refId": "context/person-name"
+			},
+			"meta:altId": "_xdm.context.person",
+			"meta:xdmType": "object",
+			"_refId": "context/person"
+		},
+		"personalEmail": {
+			"title": "Personal Email",
+			"$id": "context/emailaddress",
+			"type": "object",
+			"properties": {
+				"address": {
+					"title": "Address",
+					"type": "string",
+					"format": "email",
+					"meta:xdmType": "string"
+				}
+			},
+			"meta:altId": "_xdm.context.emailaddress",
+			"meta:xdmType": "object",
+			"_refId": "context/emailaddress"
+		},
+		"identities": {
+			"meta:status": "deprecated",
+			"title": "All User Identities",
+			"type": "array",
+			"minItems": 1,
+			"meta:xdmType": "array",
+			"items": {
+				"$id": "context/identity",
+				"type": "object",
+				"properties": {
+					"id": {
+						"title": "Identifier",
+						"type": "string",
+						"meta:xdmType": "string"
+					}
+				},
+				"meta:altId": "_xdm.context.identity",
+				"meta:xdmType": "object",
+				"_refId": "context/identity"
+			}
+		},
+		"subscriptions": {
+			"title": "Subscriptions",
+			"type": "array",
+			"meta:xdmType": "array",
+			"items": {
+				"$id": "context/subscription",
+				"type": "object",
+				"properties": {
+					"_id": {
+						"title": "Identifier",
+						"type": "string",
+						"meta:xdmType": "string"
+					}
+				},
+				"meta:altId": "_xdm.context.subscription",
+				"meta:xdmType": "object",
+				"_refId": "context/subscription"
+			}
+		},
+
+		"pushNotificationTokens": {
+			"title": "Push Notification Tokens",
+			"type": "array",
+			"meta:xdmType": "array",
+			"items": {
+				"$id": "context/pushnotificationtoken",
+				"type": "object",
+				"properties": {
+					"token": {
+						"title": "Token",
+						"type": "string",
+						"meta:xdmType": "string"
+					}
+				},
+				"meta:altId": "_xdm.context.pushnotificationtoken",
+				"meta:xdmType": "object",
+				"_refId": "context/pushnotificationtoken"
+			}
+		},
+		"notificationSubscriptions": {
+			"title": "Adobe Campaign Notification Subscriptions",
+			"type": "array",
+			"meta:xdmType": "array",
+			"items": {
+				"$id": "adobe/experience/campaign/notificationsubscription",
+				"type": "object",
+				"properties": {
+					"type": {
+						"title": "Subscription type",
+						"type": "string",
+						"meta:xdmType": "string"
+					}
+				},
+				"meta:altId": "_experience.campaign.notificationsubscription",
+				"meta:xdmType": "object",
+				"_refId": "adobe/experience/campaign/notificationsubscription"
+			}
+		}
+	},
+	"syncedRemarketingAudiences": {
+		"title": "Synchronized segments",
+		"type": "array",
+		"meta:xdmType": "array",
+		"items": {
+			"$id": "adobe/experience/adcloud/syncedremarketingaudience",
+			"type": "object",
+			"properties": {
+				"type": {
+					"title": "Segment/Audience type",
+					"type": "integer",
+					"meta:xdmType": "int"
+				},
+				"partnerDetails": {
+					"title": "Marketing Partner Details",
+					"type": "array",
+					"meta:xdmType": "array",
+					"items": {
+						"$id": "adobe/experience/adcloud/partnerdata",
+						"type": "object",
+						"properties": {
+							"id": {
+								"title": "Search/Marketing partner ID",
+								"type": "string",
+								"meta:xdmType": "string"
+							}
+						},
+						"meta:altId": "_experience.adcloud.partnerdata",
+						"meta:xdmType": "object",
+						"_refId": "adobe/experience/adcloud/partnerdata"
+					}
+				}
+			},
+			"meta:altId": "_experience.adcloud.syncedremarketingaudience",
+			"meta:xdmType": "object",
+			"_refId": "adobe/experience/adcloud/syncedremarketingaudience"
+		}
+	},
+	"segments": {
+		"title": "Segment Membership",
+		"type": "array",
+		"meta:xdmType": "array",
+		"items": {
+			"$id": "context/segmentmembership",
+			"type": "object",
+			"properties": {
+				"version": {
+					"title": "Version",
+					"type": "string",
+					"meta:xdmType": "string"
+				}
+			},
+			"meta:altId": "_xdm.context.segmentmembership",
+			"meta:xdmType": "object",
+			"_refId": "context/segmentmembership"
+		}
+	},
+	"organizations": {
+		"title": "Organizations",
+		"type": "array",
+		"meta:xdmType": "array",
+		"items": {
+			"type": "string",
+			"meta:xdmType": "string"
+		}
+	},
+	"created": 1545334909065,
+	"updated": 1545334909065,
+	"id": "context/profile",
+	"xdmVersion": "0.9.9.8",
+	"meta:altId": "_xdm.context.profile",
+	"meta:xdmType": "object",
+	"meta:status": "experimental",
+	"$schema": "http://json-schema.org/draft-06/schema#"
+}},
+		"files": "@/dataSets/5c77b6a019186c1539b3985f/views/5c77b6a019186c1539b39860/files",
+		"format": "parquet"
+	}
+}
